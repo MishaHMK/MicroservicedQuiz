@@ -1,0 +1,658 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-quiz-data
+      author: MishaHMK
+      changes:
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: text
+                  value: "What is the default value of an uninitialized int variable in a Java class?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "Which annotation marks a class as a Spring-managed component?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "Which SQL keyword removes duplicate rows from a result set?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "In Hibernate, what does @Id indicate?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "Which Spring annotation is used to inject a bean?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "What is the role of EntityManager in JPA?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "Which Java keyword prevents method overriding?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "What does the @Transactional annotation do in Spring?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "What is the purpose of the @Repository annotation?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "Which SQL clause is used to filter rows?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "What is the output of System.out.println(10 / 0); in Java?"
+        - insert:
+            tableName: questions
+            columns:
+              - column:
+                  name: text
+                  value: "What does the @Entity annotation signify?"
+
+
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 1
+              - column:
+                  name: text
+                  value: "'null'"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 1
+              - column:
+                  name: text
+                  value: "undefined"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 1
+              - column:
+                  name: text
+                  value: "NaN"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 1
+              - column:
+                  name: text
+                  value: "0"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 2
+              - column:
+                  name: text
+                  value: "@Bean"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 2
+              - column:
+                  name: text
+                  value: "@Component"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 2
+              - column:
+                  name: text
+                  value: "@Autowired"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 2
+              - column:
+                  name: text
+                  value: "@Entity"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 3
+              - column:
+                  name: text
+                  value: "DISTINCT"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 3
+              - column:
+                  name: text
+                  value: "UNIQUE"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 3
+              - column:
+                  name: text
+                  value: "FILTER"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 3
+              - column:
+                  name: text
+                  value: "ONLY"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 4
+              - column:
+                  name: text
+                  value: "Foreign key"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 4
+              - column:
+                  name: text
+                  value: "Primary key"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 4
+              - column:
+                  name: text
+                  value: "Auto-generated column"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 4
+              - column:
+                  name: text
+                  value: "Ignored field"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 5
+              - column:
+                  name: text
+                  value: "@InjectBean"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 5
+              - column:
+                  name: text
+                  value: "@Import"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 5
+              - column:
+                  name: text
+                  value: "@Autowired"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 5
+              - column:
+                  name: text
+                  value: "@ResourceScan"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 6
+              - column:
+                  name: text
+                  value: "Encrypt data"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 6
+              - column:
+                  name: text
+                  value: "Handle entity persistence"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 6
+              - column:
+                  name: text
+                  value: "Create tables"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 6
+              - column:
+                  name: text
+                  value: "Connect to REST services"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 7
+              - column:
+                  name: text
+                  value: "abstract"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 7
+              - column:
+                  name: text
+                  value: "static"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 7
+              - column:
+                  name: text
+                  value: "final"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 7
+              - column:
+                  name: text
+                  value: "private"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 8
+              - column:
+                  name: text
+                  value: "Validates entities"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 8
+              - column:
+                  name: text
+                  value: "Injects dependencies"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 8
+              - column:
+                  name: text
+                  value: "Starts a DB transaction"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 8
+              - column:
+                  name: text
+                  value: "Defines a bean"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 9
+              - column:
+                  name: text
+                  value: "Marks a service class"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 9
+              - column:
+                  name: text
+                  value: "Maps SQL queries"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 9
+              - column:
+                  name: text
+                  value: "Enables AOP logging"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 9
+              - column:
+                  name: text
+                  value: "Indicates a DAO component"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 10
+              - column:
+                  name: text
+                  value: "GROUP BY"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 10
+              - column:
+                  name: text
+                  value: "ORDER BY"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 10
+              - column:
+                  name: text
+                  value: "WHERE"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 10
+              - column:
+                  name: text
+                  value: "LIMIT"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 11
+              - column:
+                  name: text
+                  value: "0"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 11
+              - column:
+                  name: text
+                  value: "Infinity"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 11
+              - column:
+                  name: text
+                  value: "ArithmeticException"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 11
+              - column:
+                  name: text
+                  value: "Compilation error"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 12
+              - column:
+                  name: text
+                  value: "REST controller"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 12
+              - column:
+                  name: text
+                  value: "Spring bean"
+              - column:
+                  name: is_correct
+                  valueBoolean: false
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 12
+              - column:
+                  name: text
+                  value: "JPA entity class"
+              - column:
+                  name: is_correct
+                  valueBoolean: true
+        - insert:
+            tableName: answer_options
+            columns:
+              - column:
+                  name: question_id
+                  valueNumeric: 12
+              - column:
+                  name: text
+                  value: "DTO"
+              - column:
+                  name: is_correct
+                  valueBoolean: false

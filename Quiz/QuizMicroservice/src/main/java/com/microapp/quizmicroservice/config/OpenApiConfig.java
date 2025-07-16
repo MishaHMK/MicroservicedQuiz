@@ -1,4 +1,4 @@
-package com.microapp.authmicroservice.config;
+package com.microapp.quizmicroservice.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -22,7 +22,7 @@ public class OpenApiConfig {
                         .title("Auth Microservice")
                         .version("1.0")
                         .description("Auth Microservice"))
-                .addServersItem(new Server().url("http://localhost:8081/api"))
+                .addServersItem(new Server().url("http://localhost:8080/api"))
                 .addServersItem(new Server().url("http://localhost:8088/api"))
                 .components(new Components().addSecuritySchemes(KEY,
                         new SecurityScheme()

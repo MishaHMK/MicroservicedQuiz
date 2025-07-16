@@ -6,6 +6,8 @@ import com.microapp.authmicroservice.model.User;
 import com.microapp.authmicroservice.repository.user.UserRepository;
 import com.microapp.authmicroservice.security.jwt.JwtUtil;
 import java.util.Optional;
+
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,14 +23,15 @@ public class AuthenticationService {
     private final UserRepository userRepository;
 
     public UserLoginResponseDto login(UserLoginRequestDto requestDto) {
-        Optional<User> byEmail = userRepository.findByEmail(requestDto.email());
-        if (byEmail.isPresent() && byEmail.get().getPassword().isEmpty()) {
-            throw new BadCredentialsException("You have to register at first");
-        }
+        User byEmail = userRepository.findByEmail(requestDto.email())
+                .orElseThrow(
+                        () -> new EntityNotFoundException("User with this email address does not exist")
+                );
+
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(requestDto.email(), requestDto.password())
         );
-        String token = jwtUtil.generateToken(authentication.getName());
+        String token = jwtUtil.generateToken(authentication.getName(), byEmail.getId());
         return new UserLoginResponseDto(token);
     }
 }

@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-attempt_answers-table
+      author: MishaHMK
+      changes:
+        - createTable:
+            tableName: attempt_answers
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: attempt_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: question_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: option_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - addForeignKeyConstraint:
+                  baseColumnNames: attempt_id
+                  baseTableName: attempt_answers
+                  constraintName: fk_attempt-answers_quiz_attempts
+                  referencedColumnNames: id
+                  referencedTableName: quiz_attempts
+              - addForeignKeyConstraint:
+                  baseColumnNames: question_id
+                  baseTableName: attempt_answers
+                  constraintName: fk_attempt-answers_questions
+                  referencedColumnNames: id
+                  referencedTableName: questions
+              - addForeignKeyConstraint:
+                  baseColumnNames: option_id
+                  baseTableName: attempt_answers
+                  constraintName: fk_attempt-answers_answer-options
+                  referencedColumnNames: id
+                  referencedTableName: answer_options

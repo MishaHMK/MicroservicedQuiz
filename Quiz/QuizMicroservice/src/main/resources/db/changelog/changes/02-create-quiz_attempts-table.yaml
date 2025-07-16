@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-quiz_attempts-table
+      author: MishaHMK
+      changes:
+        - createTable:
+            tableName: quiz_attempts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: attempt_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: score
+                  type: bigint
+                  constraints:
+                    nullable: false
