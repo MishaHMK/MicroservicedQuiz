@@ -5,12 +5,9 @@ import com.microapp.authmicroservice.dto.UserLoginResponseDto;
 import com.microapp.authmicroservice.model.User;
 import com.microapp.authmicroservice.repository.user.UserRepository;
 import com.microapp.authmicroservice.security.jwt.JwtUtil;
-import java.util.Optional;
-
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,13 @@
 package com.microapp.quizmicroservice.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,5 +29,5 @@ public class Question {
     private String text;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<AnswerOption> answerOptions = new HashSet<>();
+    private Set<AnswerOption> answerOptions = new HashSet<>();
 }
