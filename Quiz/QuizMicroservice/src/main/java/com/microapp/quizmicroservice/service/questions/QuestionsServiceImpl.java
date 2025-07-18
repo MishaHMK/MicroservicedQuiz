@@ -1,8 +1,8 @@
-package com.microapp.quizmicroservice.service;
+package com.microapp.quizmicroservice.service.questions;
 
 import com.microapp.quizmicroservice.dto.QuestionDto;
 import com.microapp.quizmicroservice.mapper.QuestionMapper;
-import com.microapp.quizmicroservice.repository.QuestionsRepository;
+import com.microapp.quizmicroservice.repository.questions.QuestionsRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

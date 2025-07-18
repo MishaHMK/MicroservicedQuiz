@@ -1,4 +1,4 @@
-package com.microapp.quizmicroservice.repository;
+package com.microapp.quizmicroservice.repository.questions;
 
 import com.microapp.quizmicroservice.model.Question;
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.microapp.quizmicroservice.security.jwt;
 
+import com.microapp.quizmicroservice.security.UserPrincipal;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +31,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if (token != null && jwtUtil.validateToken(token)) {
             String username = jwtUtil.getUsername(token);
-            Authentication auth = new UsernamePasswordAuthenticationToken(username, null,
+            String id = jwtUtil.getId(token);
+            UserPrincipal principal = new UserPrincipal(Long.parseLong(id), username);
+            Authentication auth = new UsernamePasswordAuthenticationToken(principal, null,
                     Collections.emptyList());
             SecurityContextHolder.getContext().setAuthentication(auth);
         }

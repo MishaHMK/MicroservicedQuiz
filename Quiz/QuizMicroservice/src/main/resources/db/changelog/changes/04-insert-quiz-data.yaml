@@ -7,9 +7,6 @@ databaseChangeLog:
             tableName: questions
             columns:
               - column:
-                  name: id
-                  valueNumeric: 1
-              - column:
                   name: text
                   value: "What is the default value of an uninitialized int variable in a Java class?"
         - insert:

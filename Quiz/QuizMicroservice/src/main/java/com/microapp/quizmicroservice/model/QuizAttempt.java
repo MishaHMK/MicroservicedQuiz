@@ -22,8 +22,6 @@ public class QuizAttempt {
     private Long id;
     @NotNull
     private Long userId;
-    @NotNull
     private LocalDateTime attemptDate;
-    @NotNull
     private Long score;
 }

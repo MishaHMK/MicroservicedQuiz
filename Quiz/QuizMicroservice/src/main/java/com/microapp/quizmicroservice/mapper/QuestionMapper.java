@@ -9,5 +9,5 @@ import org.mapstruct.Mapping;
 @Mapper(config = MapperConfig.class)
 public interface QuestionMapper {
     @Mapping(source = "answerOptions", target = "answerOptionsDto")
-    QuestionDto toDto(Question dto);
+    QuestionDto toDto(Question entity);
 }
