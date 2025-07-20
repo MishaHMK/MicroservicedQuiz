@@ -35,9 +35,9 @@ public class AuthController {
     }
 
     @GetMapping("/validateToken")
-    public boolean validateToken(String header) {
-        String token = header.replace("Bearer ", "");
-        return authService.validateToken(token);
+    public boolean validateToken(@RequestParam("token") String token) {
+        String clearToken = token.replace("Bearer ", "");
+        return authService.validateToken(clearToken);
     }
 
     @GetMapping("/test")
