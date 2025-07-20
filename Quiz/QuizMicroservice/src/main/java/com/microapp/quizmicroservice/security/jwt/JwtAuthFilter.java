@@ -1,5 +1,6 @@
 package com.microapp.quizmicroservice.security.jwt;
 
+import com.microapp.quizmicroservice.clients.AuthClient;
 import com.microapp.quizmicroservice.security.UserPrincipal;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -21,6 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtAuthFilter extends OncePerRequestFilter {
     private static final String BEARER_TOKEN_PART = "Bearer ";
     private final JwtUtil jwtUtil;
+    private final AuthClient authClient;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -29,7 +31,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
         String token = getToken(request);
 
-        if (token != null && jwtUtil.validateToken(token)) {
+        if (token != null
+               // && authClient.validateToken(token)
+        ) {
             String username = jwtUtil.getUsername(token);
             String id = jwtUtil.getId(token);
             UserPrincipal principal = new UserPrincipal(Long.parseLong(id), username);

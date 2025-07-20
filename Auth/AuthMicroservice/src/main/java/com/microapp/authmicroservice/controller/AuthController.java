@@ -10,10 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Auth controller", description = "User authorization endpoint")
 @RestController
@@ -35,5 +32,16 @@ public class AuthController {
     public UserLoginResponseDto login(
             @Valid @RequestBody UserLoginRequestDto loginRequestDto) {
         return authService.login(loginRequestDto);
+    }
+
+    @GetMapping("/validateToken")
+    public boolean validateToken(String header) {
+        String token = header.replace("Bearer ", "");
+        return authService.validateToken(token);
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Auth service is up!";
     }
 }

@@ -29,4 +29,5 @@ public class AttemptAnswer {
     @ManyToOne()
     @JoinColumn(name = "option_id", referencedColumnName = "id", nullable = false)
     private AnswerOption option;
+    //private Boolean isCorrect;
 }

@@ -1,8 +1,6 @@
 package com.microapp.authmicroservice.security.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -40,5 +38,17 @@ public class JwtUtil {
                 .getBody();
 
         return claimsResolver.apply(claims);
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jws<Claims> claimsJws = Jwts.parser()
+                    .setSigningKey(secret)
+                    .build()
+                    .parseClaimsJws(token);
+            return !claimsJws.getBody().getExpiration().before(new Date());
+        } catch (JwtException | IllegalArgumentException e) {
+            throw new JwtException("Invalid JWT token");
+        }
     }
 }

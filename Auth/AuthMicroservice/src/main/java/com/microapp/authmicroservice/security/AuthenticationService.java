@@ -5,6 +5,10 @@ import com.microapp.authmicroservice.dto.UserLoginResponseDto;
 import com.microapp.authmicroservice.model.User;
 import com.microapp.authmicroservice.repository.user.UserRepository;
 import com.microapp.authmicroservice.security.jwt.JwtUtil;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,9 +16,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 @RequiredArgsConstructor
-public class    AuthenticationService {
+public class AuthenticationService {
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
@@ -30,5 +36,9 @@ public class    AuthenticationService {
         );
         String token = jwtUtil.generateToken(authentication.getName(), byEmail.getId());
         return new UserLoginResponseDto(token);
+    }
+
+    public boolean validateToken(String token) {
+        return jwtUtil.validateToken(token);
     }
 }

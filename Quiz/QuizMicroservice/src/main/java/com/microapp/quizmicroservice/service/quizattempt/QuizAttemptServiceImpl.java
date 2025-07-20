@@ -5,20 +5,19 @@ import com.microapp.quizmicroservice.dto.AnswerSubmissionDto;
 import com.microapp.quizmicroservice.dto.QuizAttemptDto;
 import com.microapp.quizmicroservice.mapper.QuizAttemptMapper;
 import com.microapp.quizmicroservice.model.AnswerOption;
+import com.microapp.quizmicroservice.model.AttemptAnswer;
 import com.microapp.quizmicroservice.model.Question;
 import com.microapp.quizmicroservice.model.QuizAttempt;
 import com.microapp.quizmicroservice.repository.questions.QuestionsRepository;
 import com.microapp.quizmicroservice.repository.quizattempt.QuizAttemptsRepository;
 import com.microapp.quizmicroservice.security.SecurityUtil;
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
@@ -42,6 +41,8 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
         List<Question> allQuestions = questionsRepository.findAll().stream().toList();
         List<AnswerSubmissionDto> answers = quizAttemptDto.getAnswers();
         AtomicLong rightAnswers = new AtomicLong(0L);
+        QuizAttempt quizAttempt = quizAttemptsRepository.findById(quizAttemptDto.getQuizAttemptId()).get();
+        List<AttemptAnswer> attemptAnswersList = new ArrayList<>();
 
         for (AnswerSubmissionDto answer : answers) {
             Question question = allQuestions.stream()
@@ -54,17 +55,27 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Answer not found"));
 
+            AttemptAnswer attemptAnswer = new AttemptAnswer()
+                    .setAttempt(quizAttempt)
+                    .setQuestion(question)
+                    .setOption(selectedOption);
+
+            attemptAnswersList.add(attemptAnswer);
+
             if (selectedOption.getIsCorrect()) {
                 rightAnswers.incrementAndGet();
             }
-        };
+        }
 
-        QuizAttempt quizAttempt = quizAttemptsRepository.findById(quizAttemptDto.getQuizAttemptId()).get();
+        quizAttempt.getAttemptAnswers().clear();
+        quizAttempt.getAttemptAnswers().addAll(attemptAnswersList);
+
+        quizAttempt.setAttemptDate(LocalDateTime.now());
 
         Long score = rightAnswers.get() * 10 / allQuestions.size();
 
         quizAttempt.setScore(score);
-        quizAttempt.setAttemptDate(LocalDateTime.now());
+
         quizAttemptsRepository.save(quizAttempt);
         return quizAttemptMapper.toDto(quizAttempt);
     }
