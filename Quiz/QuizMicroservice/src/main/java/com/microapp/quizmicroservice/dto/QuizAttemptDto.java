@@ -1,10 +1,8 @@
 package com.microapp.quizmicroservice.dto;
 
-import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.time.LocalDateTime;
 
 @Data
 @Accessors(chain = true)

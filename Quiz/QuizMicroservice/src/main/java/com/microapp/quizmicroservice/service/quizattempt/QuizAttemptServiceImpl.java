@@ -37,7 +37,6 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
 
     @Override
     public QuizAttemptDto submitQuizAttempt(SubmitQuizAttemptRequest quizAttemptDto) {
-        Long currentUserId = SecurityUtil.getCurrentUserId();
         List<Question> allQuestions = questionsRepository.findAll().stream().toList();
         List<AnswerSubmissionDto> answers = quizAttemptDto.getAnswers();
         AtomicLong rightAnswers = new AtomicLong(0L);
@@ -67,8 +66,9 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
             }
         }
 
-        quizAttempt.getAttemptAnswers().clear();
-        quizAttempt.getAttemptAnswers().addAll(attemptAnswersList);
+        List<AttemptAnswer> existingAnswers = quizAttempt.getAttemptAnswers();
+        existingAnswers.clear();
+        existingAnswers.addAll(attemptAnswersList);
 
         quizAttempt.setAttemptDate(LocalDateTime.now());
 

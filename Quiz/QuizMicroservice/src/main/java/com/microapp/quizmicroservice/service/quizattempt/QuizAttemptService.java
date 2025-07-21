@@ -5,5 +5,6 @@ import com.microapp.quizmicroservice.dto.QuizAttemptDto;
 
 public interface QuizAttemptService {
     QuizAttemptDto createQuizAttempt();
+
     QuizAttemptDto submitQuizAttempt(SubmitQuizAttemptRequest quizAttemptDto);
 }

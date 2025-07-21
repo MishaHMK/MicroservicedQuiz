@@ -1,7 +1,6 @@
 package com.microapp.quizmicroservice.controller;
 
 import com.microapp.quizmicroservice.additional.SubmitQuizAttemptRequest;
-import com.microapp.quizmicroservice.dto.AnswerSubmissionDto;
 import com.microapp.quizmicroservice.dto.QuizAttemptDto;
 import com.microapp.quizmicroservice.service.quizattempt.QuizAttemptService;
 import io.swagger.v3.oas.annotations.Operation;
